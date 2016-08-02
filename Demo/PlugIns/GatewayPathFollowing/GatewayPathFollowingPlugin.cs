@@ -54,7 +54,7 @@ namespace Demo.PlugIns.GatewayPathFollowing
             var gateways = new List<GatewayPathway.Gateway>();
             for (var i = 0; i < 200; i++)
             {
-                xOffsetDeriv = Utilities.Clamp((float)rand.NextDouble() * 2 - (xOffsetDeriv * 0.0125f), -15, 15);
+                xOffsetDeriv = MathHelper.Clamp((float)rand.NextDouble() * 2 - (xOffsetDeriv * 0.0125f), -15, 15);
                 xOffset += xOffsetDeriv;
 
                 if (i % 3 == 0)

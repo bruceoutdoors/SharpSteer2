@@ -15,22 +15,6 @@ namespace SharpSteer2.Helpers
 	public class Utilities
 	{
         /// <summary>
-        /// Clamp value between min and max
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="min"></param>
-        /// <param name="max"></param>
-        /// <returns></returns>
-	    public static float Clamp(float value, float min, float max)
-        {
-            if (value < min)
-                return min;
-            if (value > max)
-                return max;
-            return value;
-        }
-
-        /// <summary>
         /// remap a value specified relative to a pair of bounding values to the corresponding value relative to another pair of bounds.
         /// </summary>
         /// <remarks>Inspired by (dyna:remap-interval y y0 y1 z0 z1)</remarks>

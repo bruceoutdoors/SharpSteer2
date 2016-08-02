@@ -22,9 +22,9 @@ namespace Demo
         {
             var sampleLocation = location + _center;
             var sample = _field[
-                (int)Utilities.Clamp(sampleLocation.X, 0, _field.GetLength(0) - 1),
-                (int)Utilities.Clamp(sampleLocation.Y, 0, _field.GetLength(1) - 1),
-                (int)Utilities.Clamp(sampleLocation.Z, 0, _field.GetLength(2) - 1)
+                (int)MathHelper.Clamp(sampleLocation.X, 0, _field.GetLength(0) - 1),
+                (int)MathHelper.Clamp(sampleLocation.Y, 0, _field.GetLength(1) - 1),
+                (int)MathHelper.Clamp(sampleLocation.Z, 0, _field.GetLength(2) - 1)
             ];
 
             return sample;
