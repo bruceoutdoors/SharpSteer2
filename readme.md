@@ -18,7 +18,11 @@ This fork of SharpSteer includes:
 
 ### Nuget
 
-SharpSteer2 is [available](https://www.nuget.org/packages/SharpSteer2/) as a nuget package. Package releases use [semantic versioning](http://semver.org/).
+SharpSteer2 is [available](https://www.nuget.org/packages/SharpSteer2/) as a nuget package. Package releases use [semantic versioning](http://semver.org/). **HOWEVER, that version of SharpSteer2 (some .NET incompatibility) is not compatible with monogame.**
+
+### How to Use my Monogame Game?
+
+Easiest way I can think of is copy the contents of the SharpSteer2 folder to your solution folder, add SharpSteer2.csproj to your solution, then in your monogame project, right click "References" > "Add Reference" and add the SharpSteer2 project to your monogame project.
 
 ### Documentation
 
