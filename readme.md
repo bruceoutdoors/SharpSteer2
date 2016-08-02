@@ -5,9 +5,16 @@ SharpSteer2
 
 SharpSteer is a C# port of OpenSteer. Like OpenSteer, the aim of SharpSteer is to help construct steering behaviors for autonomous characters in games and animation. 
 
-The repo contains a demo:
+The repo contains a handful of demos (which in the source code they are called "Plugins"). It is helpful to know these keyboard shortcuts (which is documented only in the source code) to check them out:
+ - `TAB` - switch between different demos.
+ - `SPACE` - play/pause the demo.
+ - `R` - reset the current demo.
+ - `A` - turn on and off the annotations.
+ - `S` - select next vehicle.
+ - `F` - select next preset framerate.
+ - `C` - change camera mode.
 
-![alt text](https://lh3.googleusercontent.com/-8PM3RYhE8Uc/V6AYHZZJ1_I/AAAAAAAAL9A/IvH85PssiUk2VSajb8vZ_VSKGUuuLNIwQCCo/s720/SharpSteer2-Demo.png "SharpSteer2 demo")
+![alt text](https://lh3.googleusercontent.com/-Q4fkSJ97VWg/V6AcFZe6OoI/AAAAAAAAL9M/fV7_6yNDIsUYujN_BiOCQ8rKOmc7mU-GgCCo/s720/SharpSteer2-Demo2.png "SharpSteer2 demo")
 
 Like OpenSteer, SharpSteer provides a XNA-based application which demonstrates predefined steering behaviors. The user can quickly prototype, visualize, annotate and debug new steering behaviors by writing a plug-in for this Demo application.
 
