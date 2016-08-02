@@ -3,7 +3,11 @@ SharpSteer2
 
 **This fork of SharpSteer works with Monogame 3.5, and is compatible VS2015**
 
-SharpSteer is a C# port of OpenSteer. Like OpenSteer, the aim of SharpSteer is to help construct steering behaviors for autonomous characters in games and animation.
+SharpSteer is a C# port of OpenSteer. Like OpenSteer, the aim of SharpSteer is to help construct steering behaviors for autonomous characters in games and animation. 
+
+The repo contains a demo:
+
+![alt text](https://lh3.googleusercontent.com/-8PM3RYhE8Uc/V6AYHZZJ1_I/AAAAAAAAL9A/IvH85PssiUk2VSajb8vZ_VSKGUuuLNIwQCCo/s720/SharpSteer2-Demo.png "SharpSteer2 demo")
 
 Like OpenSteer, SharpSteer provides a XNA-based application which demonstrates predefined steering behaviors. The user can quickly prototype, visualize, annotate and debug new steering behaviors by writing a plug-in for this Demo application.
 
