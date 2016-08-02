@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+﻿using Microsoft.Xna.Framework;
 
 namespace SharpSteer2.Helpers
 {
@@ -70,9 +70,9 @@ namespace SharpSteer2.Helpers
 
         public static void ResetLocalSpace(out Vector3 forward, out Vector3 side, out Vector3 up, out Vector3 position)
         {
-            forward = -Vector3.UnitZ;
-            side = Vector3.UnitX;
-            up = Vector3.UnitY;
+            forward = Vector3.Forward;
+            side = Vector3.Left;
+            up = Vector3.Up;
             position = Vector3.Zero;
         }
 
@@ -135,28 +135,28 @@ namespace SharpSteer2.Helpers
             RegenerateOrthonormalBasis(Vector3.Normalize(newForward), out forward, out side, ref up);
         }
 
-        public static Matrix4x4 ToMatrix(this ILocalSpaceBasis basis)
+        public static Matrix ToMatrix(this ILocalSpaceBasis basis)
         {
             return ToMatrix(basis.Forward, basis.Side, basis.Up, basis.Position);
         }
 
-        public static Matrix4x4 ToMatrix(Vector3 forward, Vector3 side, Vector3 up, Vector3 position)
+        public static Matrix ToMatrix(Vector3 forward, Vector3 side, Vector3 up, Vector3 position)
         {
-            Matrix4x4 m = Matrix4x4.Identity;
+            Matrix m = Matrix.Identity;
             m.Translation = position;
-            MatrixHelpers.Right(ref m, ref side);
-            MatrixHelpers.Up(ref m, ref up);
-            MatrixHelpers.Right(ref m, ref forward);
+            m.Right = side;
+            m.Up = up;
+            m.Backward = forward;
 
             return m;
         }
 
-        public static void FromMatrix(Matrix4x4 transformation, out Vector3 forward, out Vector3 side, out Vector3 up, out Vector3 position)
+        public static void FromMatrix(Matrix transformation, out Vector3 forward, out Vector3 side, out Vector3 up, out Vector3 position)
         {
             position = transformation.Translation;
-            side = MatrixHelpers.Right(ref transformation);
-            up = MatrixHelpers.Up(ref transformation);
-            forward = MatrixHelpers.Backward(ref transformation);
+            side = transformation.Right;
+            up = transformation.Up;
+            forward = transformation.Backward;
         }
     }
 }

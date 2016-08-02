@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using SharpSteer2;
 using SharpSteer2.Database;
-using Vector3 = System.Numerics.Vector3;
+
 
 namespace Demo.PlugIns.FlowField
 {
@@ -103,7 +103,7 @@ namespace Demo.PlugIns.FlowField
                 {
                     Vector3 location = new Vector3(RANGE / SAMPLES * i - RANGE / 2, 0, RANGE / SAMPLES * j - RANGE / 2);
                     var flow = FlowField.Sample(location);
-                    Annotations.Line(location, location + flow, Color.Black.ToVector3().FromXna());
+                    Annotations.Line(location, location + flow, Color.Black);
                 }
             }
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
+using Microsoft.Xna.Framework;
 using SharpSteer2.Obstacles;
 using SharpSteer2.Pathway;
 
@@ -121,7 +121,7 @@ namespace SharpSteer2.Helpers
                     seek = s;
 
                     if (annotation != null)
-                        annotation.Circle3D(0.3f, seek, Vector3.UnitX, Colors.Green, 6);
+                        annotation.Circle3D(0.3f, seek, Vector3.Up, Color.Green, 6);
                 }
 
                 //Steer towards future path point
@@ -224,7 +224,8 @@ namespace SharpSteer2.Helpers
             // divide by neighbors, then normalize to pure direction
             if (neighbors > 0)
             {
-                steering = Vector3.Normalize(steering / neighbors);
+                steering = (steering / neighbors);
+                steering.Normalize();
             }
 
             return steering;
@@ -321,7 +322,8 @@ namespace SharpSteer2.Helpers
             // correcting direction, then normalize to pure direction
             if (neighbors > 0)
             {
-                steering = Vector3.Normalize((steering / neighbors) - vehicle.Position);
+                steering = ((steering / neighbors) - vehicle.Position);
+                steering.Normalize();
             }
 
             return steering;
@@ -369,7 +371,7 @@ namespace SharpSteer2.Helpers
 
             // annotation
             if (annotation != null)
-                annotation.Line(vehicle.Position, target, Colors.DarkGray);
+                annotation.Line(vehicle.Position, target, Color.DarkGray);
 
             return SteerForSeek(vehicle, target, maxSpeed, annotation);
         }
@@ -401,7 +403,7 @@ namespace SharpSteer2.Helpers
         {
             float mf = maxForce;
             float speedError = targetSpeed - vehicle.Speed;
-            return vehicle.Forward * Utilities.Clamp(speedError, -mf, +mf);
+            return vehicle.Forward * MathHelper.Clamp(speedError, -mf, +mf);
         }
 
         /// <summary>
@@ -565,20 +567,23 @@ namespace SharpSteer2.Helpers
 
         public static bool IsAhead(this IVehicle vehicle, Vector3 target, float cosThreshold = 0.707f)
         {
-            Vector3 targetDirection = Vector3.Normalize(target - vehicle.Position);
+            Vector3 targetDirection = (target - vehicle.Position);
+            targetDirection.Normalize();
             return Vector3.Dot(vehicle.Forward, targetDirection) > cosThreshold;
         }
 
         public static bool IsAside(this IVehicle vehicle, Vector3 target, float cosThreshold = 0.707f)
         {
-            Vector3 targetDirection = Vector3.Normalize(target - vehicle.Position);
+            Vector3 targetDirection = (target - vehicle.Position);
+            targetDirection.Normalize();
             float dp = Vector3.Dot(vehicle.Forward, targetDirection);
             return (dp < cosThreshold) && (dp > -cosThreshold);
         }
 
         public static bool IsBehind(this IVehicle vehicle, Vector3 target, float cosThreshold = -0.707f)
         {
-            Vector3 targetDirection = Vector3.Normalize(target - vehicle.Position);
+            Vector3 targetDirection = (target - vehicle.Position);
+            targetDirection.Normalize();
             return Vector3.Dot(vehicle.Forward, targetDirection) < cosThreshold;
         }
 

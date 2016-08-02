@@ -8,7 +8,7 @@
 // you should have received as part of this distribution. The terms
 // are also available at http://www.codeplex.com/SharpSteer/Project/License.aspx.
 
-using System.Numerics;
+using Microsoft.Xna.Framework;
 using SharpSteer2.Helpers;
 
 namespace SharpSteer2
@@ -85,7 +85,7 @@ namespace SharpSteer2
 			SetUnitSideFromForwardAndUp();
 		}
 
-        public LocalSpace(Matrix4x4 transformation)
+        public LocalSpace(Matrix transformation)
         {
             LocalSpaceBasisHelpers.FromMatrix(transformation, out ForwardField, out SideField, out UpField, out PositionField);
         }

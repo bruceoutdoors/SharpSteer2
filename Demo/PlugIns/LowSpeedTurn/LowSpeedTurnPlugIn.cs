@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using SharpSteer2;
-using Vector3 = System.Numerics.Vector3;
+
 
 namespace Demo.PlugIns.LowSpeedTurn
 {

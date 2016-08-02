@@ -1,8 +1,7 @@
-﻿using System.Numerics;
+﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using SharpSteer2.Helpers;
 
 namespace SharpSteer2.Pathway
 {
@@ -196,24 +195,24 @@ namespace SharpSteer2.Pathway
                     {
                         if (d < 0)
                         {
-                            s = Utilities.Clamp(-d / a, 0, 1);
+                            s = MathHelper.Clamp(-d / a, 0, 1);
                             t = 0;
                         }
                         else
                         {
                             s = 0;
-                            t = Utilities.Clamp(-e / c, 0, 1);
+                            t = MathHelper.Clamp(-e / c, 0, 1);
                         }
                     }
                     else
                     {
                         s = 0;
-                        t = Utilities.Clamp(-e / c, 0, 1);
+                        t = MathHelper.Clamp(-e / c, 0, 1);
                     }
                 }
                 else if (t < 0)
                 {
-                    s = Utilities.Clamp(-d / a, 0, 1);
+                    s = MathHelper.Clamp(-d / a, 0, 1);
                     t = 0;
                 }
                 else
@@ -234,12 +233,12 @@ namespace SharpSteer2.Pathway
                     {
                         float numer = tmp1 - tmp0;
                         float denom = a - 2 * b + c;
-                        s = Utilities.Clamp(numer / denom, 0, 1);
+                        s = MathHelper.Clamp(numer / denom, 0, 1);
                         t = 1 - s;
                     }
                     else
                     {
-                        t = Utilities.Clamp(-e / c, 0, 1);
+                        t = MathHelper.Clamp(-e / c, 0, 1);
                         s = 0;
                     }
                 }
@@ -249,12 +248,12 @@ namespace SharpSteer2.Pathway
                     {
                         float numer = c + e - b - d;
                         float denom = a - 2 * b + c;
-                        s = Utilities.Clamp(numer / denom, 0, 1);
+                        s = MathHelper.Clamp(numer / denom, 0, 1);
                         t = 1 - s;
                     }
                     else
                     {
-                        s = Utilities.Clamp(-e / c, 0, 1);
+                        s = MathHelper.Clamp(-e / c, 0, 1);
                         t = 0;
                     }
                 }
@@ -262,7 +261,7 @@ namespace SharpSteer2.Pathway
                 {
                     float numer = c + e - b - d;
                     float denom = a - 2 * b + c;
-                    s = Utilities.Clamp(numer / denom, 0, 1);
+                    s = MathHelper.Clamp(numer / denom, 0, 1);
                     t = 1 - s;
                 }
             }

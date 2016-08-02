@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using SharpSteer2;
 using SharpSteer2.Helpers;
-using Vector3 = System.Numerics.Vector3;
+
 
 namespace Demo.PlugIns.Soccer
 {
@@ -84,7 +84,7 @@ namespace Demo.PlugIns.Soccer
 							float z = _ball.Position.Z - Position.Z > 0 ? -1.0f : 1.0f;
 							Vector3 behindBall = _ball.Position + (_imTeamA ? new Vector3(2, 0, z) : new Vector3(-2, 0, z));
 							Vector3 behindBallForce = SteerForSeek(behindBall);
-                            annotation.Line(Position, behindBall, Color.Green.ToVector3().FromXna());
+                            annotation.Line(Position, behindBall, Color.Green);
 							Vector3 evadeTarget = SteerForFlee(_ball.Position);
 							ApplySteeringForce(behindBallForce * 10 + evadeTarget, elapsedTime);
 						}

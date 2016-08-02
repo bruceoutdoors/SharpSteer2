@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Numerics;
 using SharpSteer2;
 using SharpSteer2.Helpers;
+using Microsoft.Xna.Framework;
 
 namespace Demo
 {

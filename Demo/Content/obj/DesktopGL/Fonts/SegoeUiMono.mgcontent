@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>D:/Libraries/Documents/Visual Studio 2015/Projects/SharpSteer2/Demo/Content/Fonts/SegoeUiMono.spritefont</SourceFile>
+  <SourceTime>2016-08-02T10:50:33.9867097+08:00</SourceTime>
+  <DestFile>D:/Libraries/Documents/Visual Studio 2015/Projects/SharpSteer2/Demo/Content/bin/DesktopGL/Fonts/SegoeUiMono.xnb</DestFile>
+  <DestTime>2016-08-02T11:08:17.4886072+08:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2016-03-30T14:36:08+08:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2016-03-30T14:36:08+08:00</ProcessorTime>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

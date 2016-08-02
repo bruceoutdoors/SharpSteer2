@@ -14,7 +14,6 @@ using Microsoft.Xna.Framework;
 using SharpSteer2;
 using SharpSteer2.Helpers;
 using SharpSteer2.Obstacles;
-using Vector3 = System.Numerics.Vector3;
 
 namespace Demo.PlugIns.Ctf
 { // spherical obstacle group
@@ -73,10 +72,10 @@ namespace Demo.PlugIns.Ctf
 			Vector3 fl = Position + boxFront + boxSide;
 			Vector3 br = Position - boxSide;
 			Vector3 bl = Position + boxSide;
-			annotation.Line(fr, fl, Color.White.ToVector3().FromXna());
-            annotation.Line(fl, bl, Color.White.ToVector3().FromXna());
-            annotation.Line(bl, br, Color.White.ToVector3().FromXna());
-            annotation.Line(br, fr, Color.White.ToVector3().FromXna());
+			annotation.Line(fr, fl, Color.White);
+            annotation.Line(fl, bl, Color.White);
+            annotation.Line(bl, br, Color.White);
+            annotation.Line(br, fr, Color.White);
 		}
 
 		public void DrawHomeBase()

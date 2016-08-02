@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
 using SharpSteer2;
-using Vector3 = System.Numerics.Vector3;
+
 
 namespace Demo.PlugIns.Soccer
 {

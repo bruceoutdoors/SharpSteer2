@@ -1,5 +1,5 @@
 ﻿
-using System.Numerics;
+using Microsoft.Xna.Framework;
 
 namespace SharpSteer2
 {
@@ -17,42 +17,42 @@ namespace SharpSteer2
             }
         }
 
-        public void Line(Vector3 startPoint, Vector3 endPoint, Vector3 color, float opacity = 1)
+        public void Line(Vector3 startPoint, Vector3 endPoint, Color color, float opacity = 1)
         {
 
         }
 
-        public void CircleXZ(float radius, Vector3 center, Vector3 color, int segments)
+        public void CircleXZ(float radius, Vector3 center, Color color, int segments)
         {
 
         }
 
-        public void DiskXZ(float radius, Vector3 center, Vector3 color, int segments)
+        public void DiskXZ(float radius, Vector3 center, Color color, int segments)
         {
 
         }
 
-        public void Circle3D(float radius, Vector3 center, Vector3 axis, Vector3 color, int segments)
+        public void Circle3D(float radius, Vector3 center, Vector3 axis, Color color, int segments)
         {
 
         }
 
-        public void Disk3D(float radius, Vector3 center, Vector3 axis, Vector3 color, int segments)
+        public void Disk3D(float radius, Vector3 center, Vector3 axis, Color color, int segments)
         {
 
         }
 
-        public void CircleOrDiskXZ(float radius, Vector3 center, Vector3 color, int segments, bool filled)
+        public void CircleOrDiskXZ(float radius, Vector3 center, Color color, int segments, bool filled)
         {
 
         }
 
-        public void CircleOrDisk3D(float radius, Vector3 center, Vector3 axis, Vector3 color, int segments, bool filled)
+        public void CircleOrDisk3D(float radius, Vector3 center, Vector3 axis, Color color, int segments, bool filled)
         {
 
         }
 
-        public void CircleOrDisk(float radius, Vector3 axis, Vector3 center, Vector3 color, int segments, bool filled, bool in3D)
+        public void CircleOrDisk(float radius, Vector3 axis, Vector3 center, Color color, int segments, bool filled, bool in3D)
         {
 
         }

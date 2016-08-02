@@ -9,7 +9,7 @@
 // are also available at http://www.codeplex.com/SharpSteer/Project/License.aspx.
 
 using System;
-using System.Numerics;
+using Microsoft.Xna.Framework;
 using SharpSteer2.Helpers;
 
 namespace SharpSteer2
@@ -23,7 +23,7 @@ namespace SharpSteer2
         Vector3 _acceleration;
 
 		public SimpleVehicle(IAnnotationService annotations = null)
-            : base(annotations)
+            :base(annotations)
 		{
 		}
 
@@ -97,7 +97,7 @@ namespace SharpSteer2
 			// (rate is proportional to time step, then clipped into useful range)
 			if (elapsedTime > 0)
 			{
-                float smoothRate = Utilities.Clamp(9 * elapsedTime, 0.15f, 0.4f);
+                float smoothRate = MathHelper.Clamp(9 * elapsedTime, 0.15f, 0.4f);
 				Utilities.BlendIntoAccumulator(smoothRate, newAcceleration, ref _acceleration);
 			}
 
@@ -157,12 +157,13 @@ namespace SharpSteer2
 			float smoothRate = elapsedTime * 3;
 			Vector3 tempUp = Up;
 			Utilities.BlendIntoAccumulator(smoothRate, bankUp, ref tempUp);
-			Up = Vector3.Normalize(tempUp);
+			Up = tempUp;
+            Up.Normalize();
 
-			annotation.Line(Position, Position + (globalUp * 4), Colors.White);
-	        annotation.Line(Position, Position + (bankUp * 4), Colors.Orange);
-			annotation.Line(Position, Position + (accelUp * 4), Colors.Red);
-	        annotation.Line(Position, Position + (Up * 1), Colors.Gold);
+			annotation.Line(Position, Position + (globalUp * 4), Color.White);
+			annotation.Line(Position, Position + (bankUp * 4), Color.Orange);
+			annotation.Line(Position, Position + (accelUp * 4), Color.Red);
+			annotation.Line(Position, Position + (Up * 1), Color.Yellow);
 
 			// adjust orthonormal basis vectors to be aligned with new velocity
 			if (Speed > 0) RegenerateOrthonormalBasisUF(newVelocity / Speed);
@@ -184,7 +185,7 @@ namespace SharpSteer2
 				return force;
 
             float range = Speed / maxAdjustedSpeed;
-            float cosine = Utilities.Lerp(1.0f, -1.0f, (float)Math.Pow(range, 20));
+            float cosine = MathHelper.Lerp(1.0f, -1.0f, (float)Math.Pow(range, 20));
             return force.LimitMaxDeviationAngle(cosine, Forward);
 		}
 
@@ -262,7 +263,7 @@ namespace SharpSteer2
 		// rotate about it by a random angle (pick random forward, derive side).
 	    protected void RandomizeHeadingOnXZPlane()
 		{
-			Up = Vector3.UnitY;
+			Up = Vector3.Up;
             Forward = Vector3Helpers.RandomUnitVectorOnXZPlane();
 	        Side = Vector3.Cross(Forward, Up);
 		}

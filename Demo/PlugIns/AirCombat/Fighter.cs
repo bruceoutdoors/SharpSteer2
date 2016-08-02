@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using SharpSteer2;
 using SharpSteer2.Database;
 using SharpSteer2.Helpers;
-using Vector3 = System.Numerics.Vector3;
+
 
 namespace Demo.PlugIns.AirCombat
 {

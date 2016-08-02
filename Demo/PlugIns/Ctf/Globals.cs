@@ -9,7 +9,6 @@
 // are also available at http://www.codeplex.com/SharpSteer/Project/License.aspx.
 
 using Microsoft.Xna.Framework;
-using Vector3 = System.Numerics.Vector3;
 
 namespace Demo.PlugIns.Ctf
 {

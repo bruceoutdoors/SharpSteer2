@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework.Input;
 using SharpSteer2;
 using SharpSteer2.Helpers;
 using SharpSteer2.Obstacles;
-using Vector3 = System.Numerics.Vector3;
+
 
 namespace Demo.PlugIns.Ctf
 { // spherical obstacle group

@@ -10,7 +10,6 @@
 
 using Microsoft.Xna.Framework;
 using SharpSteer2;
-using Vector3 = System.Numerics.Vector3;
 
 namespace Demo.PlugIns.Ctf
 {
@@ -71,7 +70,7 @@ namespace Demo.PlugIns.Ctf
 				if (Globals.Seeker.State == SeekerState.Tagged)
 				{
 					Color color = new Color((byte)(255.0f * 0.8f), (byte)(255.0f * 0.5f), (byte)(255.0f * 0.5f));
-					annotation.DiskXZ(sumOfRadii, (Position + Globals.Seeker.Position) / 2, color.ToVector3().FromXna(), 20);
+					annotation.DiskXZ(sumOfRadii, (Position + Globals.Seeker.Position) / 2, color, 20);
 				}
 			}
 		}

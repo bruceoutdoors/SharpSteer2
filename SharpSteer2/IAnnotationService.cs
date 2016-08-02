@@ -8,7 +8,7 @@
 // you should have received as part of this distribution. The terms
 // are also available at http://www.codeplex.com/SharpSteer/Project/License.aspx.
 
-using System.Numerics;
+using Microsoft.Xna.Framework;
 
 namespace SharpSteer2
 {
@@ -41,7 +41,7 @@ namespace SharpSteer2
 	    /// <param name="endPoint">The end point of the line.</param>
 	    /// <param name="color">The color of the line.</param>
 	    /// <param name="opacity"></param>
-	    void Line(Vector3 startPoint, Vector3 endPoint, Vector3 color, float opacity = 1);
+	    void Line(Vector3 startPoint, Vector3 endPoint, Color color, float opacity = 1);
 
 		/// <summary>
 		/// Draws a circle on the XZ plane.
@@ -50,7 +50,7 @@ namespace SharpSteer2
 		/// <param name="center">The center of the circle.</param>
 		/// <param name="color">The color of the circle.</param>
 		/// <param name="segments">The number of segments to use to draw the circle.</param>
-        void CircleXZ(float radius, Vector3 center, Vector3 color, int segments);
+		void CircleXZ(float radius, Vector3 center, Color color, int segments);
 
 		/// <summary>
 		/// Draws a disk on the XZ plane.
@@ -59,7 +59,7 @@ namespace SharpSteer2
 		/// <param name="center">The center of the disk.</param>
 		/// <param name="color">The color of the disk.</param>
 		/// <param name="segments">The number of segments to use to draw the disk.</param>
-        void DiskXZ(float radius, Vector3 center, Vector3 color, int segments);
+		void DiskXZ(float radius, Vector3 center, Color color, int segments);
 
 		/// <summary>
 		/// Draws a circle perpendicular to the given axis.
@@ -69,7 +69,7 @@ namespace SharpSteer2
 		/// <param name="axis">The axis of the circle.</param>
 		/// <param name="color">The color of the circle.</param>
 		/// <param name="segments">The number of segments to use to draw the circle.</param>
-        void Circle3D(float radius, Vector3 center, Vector3 axis, Vector3 color, int segments);
+		void Circle3D(float radius, Vector3 center, Vector3 axis, Color color, int segments);
 
 		/// <summary>
 		/// Draws a disk perpendicular to the given axis.
@@ -79,7 +79,7 @@ namespace SharpSteer2
 		/// <param name="axis">The axis of the disk.</param>
 		/// <param name="color">The color of the disk.</param>
 		/// <param name="segments">The number of segments to use to draw the disk.</param>
-        void Disk3D(float radius, Vector3 center, Vector3 axis, Vector3 color, int segments);
+		void Disk3D(float radius, Vector3 center, Vector3 axis, Color color, int segments);
 
 		/// <summary>
 		/// Draws a circle (not filled) or disk (filled) on the XZ plane.
@@ -89,7 +89,7 @@ namespace SharpSteer2
 		/// <param name="color">The color of the circle/disk.</param>
 		/// <param name="segments">The number of segments to use to draw the circle/disk.</param>
 		/// <param name="filled">Flag indicating whether to draw a disk or circle.</param>
-        void CircleOrDiskXZ(float radius, Vector3 center, Vector3 color, int segments, bool filled);
+		void CircleOrDiskXZ(float radius, Vector3 center, Color color, int segments, bool filled);
 
 		/// <summary>
 		/// Draws a circle (not filled) or disk (filled) perpendicular to the given axis.
@@ -100,7 +100,7 @@ namespace SharpSteer2
 		/// <param name="color">The color of the circle/disk.</param>
 		/// <param name="segments">The number of segments to use to draw the circle/disk.</param>
 		/// <param name="filled">Flag indicating whether to draw a disk or circle.</param>
-        void CircleOrDisk3D(float radius, Vector3 center, Vector3 axis, Vector3 color, int segments, bool filled);
+		void CircleOrDisk3D(float radius, Vector3 center, Vector3 axis, Color color, int segments, bool filled);
 
 		/// <summary>
 		/// Draws a circle (not filled) or disk (filled) perpendicular to the given axis.
@@ -112,7 +112,7 @@ namespace SharpSteer2
 		/// <param name="segments">The number of segments to use to draw the circle/disk.</param>
 		/// <param name="filled">Flag indicating whether to draw a disk or circle.</param>
 		/// <param name="in3D">Flag indicating whether to draw the disk/circle in 3D or the XZ plane.</param>
-        void CircleOrDisk(float radius, Vector3 axis, Vector3 center, Vector3 color, int segments, bool filled, bool in3D);
+		void CircleOrDisk(float radius, Vector3 axis, Vector3 center, Color color, int segments, bool filled, bool in3D);
 
 		/// <summary>
 		/// Called when steerToAvoidObstacles decides steering is required.

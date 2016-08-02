@@ -9,8 +9,8 @@
 // are also available at http://www.codeplex.com/SharpSteer/Project/License.aspx.
 
 using System.Collections.Generic;
-using System.Numerics;
 using SharpSteer2.Obstacles;
+using Microsoft.Xna.Framework;
 
 namespace Demo.PlugIns.Pedestrian
 {

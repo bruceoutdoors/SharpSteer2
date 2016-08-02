@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <authors>Martin Evans, Tyler Forsythe, Björn Graf</authors>
+    <owners>Martin Evans</owners>
+    <licenseUrl>https://github.com/martindevans/SharpSteer2/blob/master/License.txt</licenseUrl>
+    <projectUrl>https://github.com/martindevans/SharpSteer2</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright 2014</copyright>
+  </metadata>
+</package>

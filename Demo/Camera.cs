@@ -9,9 +9,9 @@
 // are also available at http://www.codeplex.com/SharpSteer/Project/License.aspx.
 
 using System;
-using System.Numerics;
 using SharpSteer2;
 using SharpSteer2.Helpers;
+using Microsoft.Xna.Framework;
 
 namespace Demo
 {

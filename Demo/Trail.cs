@@ -1,7 +1,6 @@
 using System;
 using Microsoft.Xna.Framework;
 using SharpSteer2;
-using Vector3 = System.Numerics.Vector3;
 
 namespace Demo
 {
@@ -108,7 +107,7 @@ namespace Demo
 					if (j == 0)
 					{
 						// draw segment from current position to first trail point
-                        annotation.Line(_currentPosition, _vertices[index], color.ToVector3().FromXna());
+                        annotation.Line(_currentPosition, _vertices[index], color);
 					}
 					else
 					{
@@ -116,7 +115,7 @@ namespace Demo
 						const float MIN_O = 0.05f; // minimum opacity
 						float fraction = (float)j / _vertices.Length;
 						float opacity = (fraction * (1 - MIN_O)) + MIN_O;
-                        annotation.Line(_vertices[index], _vertices[next], color.ToVector3().FromXna(), opacity);
+                        annotation.Line(_vertices[index], _vertices[next], color, opacity);
 					}
 				}
 				index = next;

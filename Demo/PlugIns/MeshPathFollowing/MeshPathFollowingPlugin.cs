@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using SharpSteer2;
 using SharpSteer2.Pathway;
-using Vector3 = System.Numerics.Vector3;
+
 
 namespace Demo.PlugIns.MeshPathFollowing
 {

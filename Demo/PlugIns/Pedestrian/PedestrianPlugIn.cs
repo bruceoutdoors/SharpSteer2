@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using SharpSteer2;
 using SharpSteer2.Database;
-using Vector3 = System.Numerics.Vector3;
+
 
 namespace Demo.PlugIns.Pedestrian
 {

@@ -160,7 +160,7 @@ namespace Demo
 		}
 
 		// ground plane grid-drawing utility used by several plug-ins
-		public static void GridUtility(System.Numerics.Vector3 gridTarget)
+		public static void GridUtility(Vector3 gridTarget)
 		{
 			// Math.Round off target to the nearest multiple of 2 (because the
 			// checkboard grid with a pitch of 1 tiles with a period of 2)
@@ -531,8 +531,8 @@ namespace Demo
 		{
 			GamePadState padState = GamePad.GetState(PlayerIndex.One);
 			KeyboardState keyState = Keyboard.GetState();
-			if (padState.Buttons.Back == ButtonState.Pressed || keyState.IsKeyDown(Keys.Escape))
-				Exit();
+			//if (padState.Buttons.Back == ButtonState.Pressed || keyState.IsKeyDown(Keys.Escape))
+			//	Exit();
 
 			if (IsKeyDown(keyState, Keys.R))
 				ResetSelectedPlugIn();

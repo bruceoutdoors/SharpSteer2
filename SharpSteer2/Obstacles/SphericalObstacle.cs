@@ -9,7 +9,7 @@
 // are also available at http://www.codeplex.com/SharpSteer/Project/License.aspx.
 
 using System;
-using System.Numerics;
+using Microsoft.Xna.Framework;
 using SharpSteer2.Helpers;
 
 namespace SharpSteer2.Obstacles
@@ -71,7 +71,7 @@ namespace SharpSteer2.Obstacles
             var capAxis = alongCap / capLength;
 
             //Project vector onto capsule axis
-            var b = Utilities.Clamp(Vector3.Dot(Center - capStart, capAxis), 0, capLength);
+            var b = MathHelper.Clamp(Vector3.Dot(Center - capStart, capAxis), 0, capLength);
 
             //Get point on axis (closest point to sphere center)
             var r = capStart + capAxis * b;
@@ -90,7 +90,7 @@ namespace SharpSteer2.Obstacles
             if (avoidance == Vector3.Zero)
                 avoidance = -v.Forward + v.Side * 0.01f * RandomHelpers.Random();
 
-            avoidance = Vector3.Normalize(avoidance);
+            avoidance.Normalize();
             avoidance *= v.MaxForce;
             avoidance += v.Forward * v.MaxForce * 0.75f;
             return avoidance;

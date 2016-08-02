@@ -12,7 +12,6 @@ using System;
 using Microsoft.Xna.Framework;
 using SharpSteer2;
 using SharpSteer2.Helpers;
-using Vector3 = System.Numerics.Vector3;
 
 namespace Demo.PlugIns.MapDrive
 {
@@ -184,7 +183,7 @@ namespace Demo.PlugIns.MapDrive
 						Vector3 flat = wander;
 						Vector3 weighted = flat.TruncateLength(MaxForce) * 6;
 						Vector3 a = Position + new Vector3(0, 0.2f, 0);
-                        annotation.Line(a, a + (weighted * 0.3f), Color.White.ToVector3().FromXna());
+                        annotation.Line(a, a + (weighted * 0.3f), Color.White);
 						steering += weighted;
 					}
 
@@ -208,8 +207,8 @@ namespace Demo.PlugIns.MapDrive
 							{
 								Vector3 b = (Position + (Up * 0.2f) + (Forward * _halfLength * 1.4f));
 								const float L = 2;
-                                annotation.Line(b, b + (Forward * L), Color.Cyan.ToVector3().FromXna());
-                                annotation.Line(b, b + (pathHeading * L), Color.Cyan.ToVector3().FromXna());
+                                annotation.Line(b, b + (Forward * L), Color.Cyan);
+                                annotation.Line(b, b + (pathHeading * L), Color.Cyan);
 							}
 							steering += (SteerTowardHeading(pathHeading) *
 										 (Path.NearWaypoint(Position) ?
@@ -239,7 +238,7 @@ namespace Demo.PlugIns.MapDrive
 				bool circles = WeAreGoingInCircles();
 				if (circles && !Stuck) StuckCycleCount++;
 				if (circles) Stuck = true;
-                annotation.CircleOrDisk(0.5f, Up, SmoothedPosition, Color.White.ToVector3().FromXna(), 12, circles, false);
+                annotation.CircleOrDisk(0.5f, Up, SmoothedPosition, Color.White, 12, circles, false);
 			}
 
 			// annotation
@@ -289,9 +288,9 @@ namespace Demo.PlugIns.MapDrive
 				// if not, the "hint" is to turn to align with path heading
 				Vector3 s = Side * _halfWidth;
 				float f = _halfLength * 2;
-                annotation.Line(p + s, p + s + (Forward * f), Color.Black.ToVector3().FromXna());
-                annotation.Line(p - s, p - s + (Forward * f), Color.Black.ToVector3().FromXna());
-                annotation.Line(p, p + (pathHeading * 5), Color.Magenta.ToVector3().FromXna());
+                annotation.Line(p + s, p + s + (Forward * f), Color.Black);
+                annotation.Line(p - s, p - s + (Forward * f), Color.Black);
+                annotation.Line(p, p + (pathHeading * 5), Color.Magenta);
 				return pathHeading;
 			}
 			else
@@ -326,13 +325,13 @@ namespace Demo.PlugIns.MapDrive
 							{
 								Vector3 temp = Vector3.Normalize(offset);
 								Vector3 q = p + (temp * 5);
-                                annotation.Line(p, q, Color.Magenta.ToVector3().FromXna());
-                                annotation.CircleOrDisk(0.4f, Up, o, Color.White.ToVector3().FromXna(), 12, false, false);
+                                annotation.Line(p, q, Color.Magenta);
+                                annotation.CircleOrDisk(0.4f, Up, o, Color.White, 12, false, false);
 								return offset;
 							}
 						}
 					}
-                    annotation.CircleOrDisk(0.4f, Up, o, Color.Black.ToVector3().FromXna(), 12, false, false);
+                    annotation.CircleOrDisk(0.4f, Up, o, Color.Black, 12, false, false);
 				}
 			}
 			// otherwise, no hint
@@ -366,7 +365,7 @@ namespace Demo.PlugIns.MapDrive
 			if (hintGiven && !_dtZero)
 				HintGivenCount++;
 			if (hintGiven)
-                annotation.CircleOrDisk(_halfWidth * 0.9f, Up, Position + (Up * 0.2f), Color.White.ToVector3().FromXna(), 12, false, false);
+                annotation.CircleOrDisk(_halfWidth * 0.9f, Up, Position + (Up * 0.2f), Color.White, 12, false, false);
 
 			// QQQ temporary global QQQoaJustScraping
 			_qqQoaJustScraping = true;
@@ -392,8 +391,8 @@ namespace Demo.PlugIns.MapDrive
 					const float Q = TWO_PI * FRAC_LIMIT;
 					Vector3 fooz = Position - center;
 					Vector3 booz = fooz.RotateAboutGlobalY(sign * Q);
-                    annotation.Line(center, center + fooz, Color.Red.ToVector3().FromXna());
-                    annotation.Line(center, center + booz, Color.Red.ToVector3().FromXna());
+                    annotation.Line(center, center + fooz, Color.Red);
+                    annotation.Line(center, center + booz, Color.Red);
 				}
 			}
 
@@ -583,7 +582,7 @@ namespace Demo.PlugIns.MapDrive
 			{
 				Color blue = new Color(0, 0, (byte)(255.0f * 0.8f));
 				annotation.CircleOrDisk(MinimumTurningRadius() * 1.2f, Up,
-                                        center, blue.ToVector3().FromXna(), 40, false, false);
+                                        center, blue, 40, false, false);
 				return Side * sign;
 			}
 
@@ -637,7 +636,7 @@ namespace Demo.PlugIns.MapDrive
 			if (scanIndex > 0)
 			{
 				Vector3 hit = scanOrigin + (scanStep * scanIndex);
-                annotation.Line(scanOrigin, hit, new Color((byte)(255.0f * 0.7f), (byte)(255.0f * 0.3f), (byte)(255.0f * 0.3f)).ToVector3().FromXna());
+                annotation.Line(scanOrigin, hit, new Color((byte)(255.0f * 0.7f), (byte)(255.0f * 0.3f), (byte)(255.0f * 0.3f)));
 			}
 		}
 
@@ -649,10 +648,10 @@ namespace Demo.PlugIns.MapDrive
 			Vector3 ff = Forward * r;
 			Vector3 ss = Side * r;
 			Vector3 pp = Position + (Up * 0.2f);
-            annotation.Line(pp + ff + ss, pp - ff + ss, Color.White.ToVector3().FromXna());
-            annotation.Line(pp - ff - ss, pp - ff + ss, Color.White.ToVector3().FromXna());
-            annotation.Line(pp - ff - ss, pp + ff - ss, Color.White.ToVector3().FromXna());
-            annotation.Line(pp + ff + ss, pp + ff - ss, Color.White.ToVector3().FromXna());
+            annotation.Line(pp + ff + ss, pp - ff + ss, Color.White);
+            annotation.Line(pp - ff - ss, pp - ff + ss, Color.White);
+            annotation.Line(pp - ff - ss, pp + ff - ss, Color.White);
+            annotation.Line(pp + ff + ss, pp + ff - ss, Color.White);
 
 			//OpenSteerDemo.clock.setPausedState (true);
 		}
@@ -712,7 +711,7 @@ namespace Demo.PlugIns.MapDrive
 				// to loop only for the sake of annotation (make that optional?)
 				if (obstacleFound)
 				{
-                    annotation.Line(oldPoint, newPoint, afterColor.ToVector3().FromXna());
+                    annotation.Line(oldPoint, newPoint, afterColor);
 				}
 				else
 				{
@@ -728,7 +727,7 @@ namespace Demo.PlugIns.MapDrive
 						obstacleDistance = d2 * 0.5f * (i + 1);
 						returnObstaclePosition = newPoint;
 					}
-                    annotation.Line(oldPoint, newPoint, beforeColor.ToVector3().FromXna());
+                    annotation.Line(oldPoint, newPoint, beforeColor);
 				}
 				// save new point for next time around loop
 				oldPoint = newPoint;
@@ -804,8 +803,8 @@ namespace Demo.PlugIns.MapDrive
 				if (!CurvedSteering)
 				{
 					Vector3 d = step * samples;
-                    annotation.Line(lOffset, lOffset + d, Color.White.ToVector3().FromXna());
-                    annotation.Line(rOffset, rOffset + d, Color.White.ToVector3().FromXna());
+                    annotation.Line(lOffset, lOffset + d, Color.White);
+                    annotation.Line(rOffset, rOffset + d, Color.White);
 				}
 
 				// increment sideways displacement of scan line
@@ -995,7 +994,7 @@ namespace Demo.PlugIns.MapDrive
 			// facing the wrong way?
 			if (alignedness < 0)
 			{
-                annotation.Line(p, p + (nowTangent * 10), Color.Cyan.ToVector3().FromXna());
+                annotation.Line(p, p + (nowTangent * 10), Color.Cyan);
 
 				// if nearly anti-parallel
 				if (alignedness < -0.707f)
@@ -1021,7 +1020,7 @@ namespace Demo.PlugIns.MapDrive
 			else
 			{
 				// otherwise determine corrective steering (including braking)
-                annotation.Line(futurePosition, futurePosition + pathHeading, Color.Red.ToVector3().FromXna());
+                annotation.Line(futurePosition, futurePosition + pathHeading, Color.Red);
 				AnnotatePathFollowing(futurePosition, onPath,
 									   Position, futureOutside);
 
@@ -1029,7 +1028,7 @@ namespace Demo.PlugIns.MapDrive
 				if (Path.NearWaypoint(onPath) && (futureOutside > 0))
 				{
 					// steer to align with next path segment
-                    annotation.Circle3D(0.5f, futurePosition, Up, Color.Red.ToVector3().FromXna(), 8);
+                    annotation.Circle3D(0.5f, futurePosition, Up, Color.Red, 8);
 					return SteerTowardHeading(pathHeading) + braking;
 				}
 				else
@@ -1049,7 +1048,7 @@ namespace Demo.PlugIns.MapDrive
 			Vector3 p = Position;
 
 			// draw the circular collision boundary
-            annotation.CircleOrDisk(Radius, Up, p, Color.Black.ToVector3().FromXna(), 32, false, false);
+            annotation.CircleOrDisk(Radius, Up, p, Color.Black, 32, false, false);
 
 			// draw forward sensing corridor and wings ( for non-curved case)
 			if (!CurvedSteering)
@@ -1065,19 +1064,19 @@ namespace Demo.PlugIns.MapDrive
 					Vector3 c3 = p - corSide + corFront;
 					Vector3 c4 = p - corSide + corBack;
 					Color color = ((_annotateAvoid != Vector3.Zero) ? Color.Red : Color.Yellow);
-                    annotation.Line(c1, c2, color.ToVector3().FromXna());
-                    annotation.Line(c2, c3, color.ToVector3().FromXna());
-                    annotation.Line(c3, c4, color.ToVector3().FromXna());
+                    annotation.Line(c1, c2, color);
+                    annotation.Line(c2, c3, color);
+                    annotation.Line(c3, c4, color);
 
 					// draw sensing "wings"
 					Vector3 wingWidth = Side * WingSlope() * corLength;
 					Vector3 wingTipL = c2 + wingWidth;
 					Vector3 wingTipR = c3 - wingWidth;
 					Color wingColor = Color.Orange;
-                    if (_wingDrawFlagL) annotation.Line(c2, wingTipL, wingColor.ToVector3().FromXna());
-                    if (_wingDrawFlagL) annotation.Line(c1, wingTipL, wingColor.ToVector3().FromXna());
-                    if (_wingDrawFlagR) annotation.Line(c3, wingTipR, wingColor.ToVector3().FromXna());
-                    if (_wingDrawFlagR) annotation.Line(c4, wingTipR, wingColor.ToVector3().FromXna());
+                    if (_wingDrawFlagL) annotation.Line(c2, wingTipL, wingColor);
+                    if (_wingDrawFlagL) annotation.Line(c1, wingTipL, wingColor);
+                    if (_wingDrawFlagR) annotation.Line(c3, wingTipR, wingColor);
+                    if (_wingDrawFlagR) annotation.Line(c4, wingTipR, wingColor);
 				}
 			}
 
@@ -1085,7 +1084,7 @@ namespace Demo.PlugIns.MapDrive
 			Vector3 above = Position + new Vector3(0, 0.2f, 0);
 			Vector3 accel = Acceleration * 5 / MaxForce;
 			Color aColor = new Color((byte)(255.0f * 0.4f), (byte)(255.0f * 0.4f), (byte)(255.0f * 0.8f));
-            annotation.Line(above, above + accel, aColor.ToVector3().FromXna());
+            annotation.Line(above, above + accel, aColor);
 		}
 
 		// draw vehicle's body and annotation
@@ -1125,10 +1124,10 @@ namespace Demo.PlugIns.MapDrive
 
 			// draw line from our position to our predicted future position
 			if (!CurvedSteering)
-                annotation.Line(Position, future, futurePositionColor.ToVector3().FromXna());
+                annotation.Line(Position, future, futurePositionColor);
 
 			// draw line from our position to our steering target on the path
-            annotation.Line(Position, target, toTargetColor.ToVector3().FromXna());
+            annotation.Line(Position, target, toTargetColor);
 
 			// draw a two-toned line between the future test point and its
 			// projection onto the path, the change from dark to light color
@@ -1139,8 +1138,8 @@ namespace Demo.PlugIns.MapDrive
 			boundaryOffset *= o;
 
 			Vector3 onPathBoundary = future + boundaryOffset;
-            annotation.Line(onPath, onPathBoundary, insidePathColor.ToVector3().FromXna());
-            annotation.Line(onPathBoundary, future, outsidePathColor.ToVector3().FromXna());
+            annotation.Line(onPath, onPathBoundary, insidePathColor);
+            annotation.Line(onPathBoundary, future, outsidePathColor);
 		}
 
 		public void DrawMap()
@@ -1374,9 +1373,9 @@ namespace Demo.PlugIns.MapDrive
 				// annotation
 				Vector3 u = new Vector3(0, 0.5f, 0);
 				Vector3 p = Position;
-				annotation.Line(p + u, p + u + absolute, Color.Red.ToVector3().FromXna());
-                annotation.Line(p + u, p + u + curved, Color.Yellow.ToVector3().FromXna());
-                annotation.Line(p + u * 2, p + u * 2 + _currentSteering, Color.Green.ToVector3().FromXna());
+				annotation.Line(p + u, p + u + absolute, Color.Red);
+                annotation.Line(p + u, p + u + curved, Color.Yellow);
+                annotation.Line(p + u * 2, p + u * 2 + _currentSteering, Color.Green);
 			}
 			return _currentSteering;
 		}
@@ -1450,7 +1449,7 @@ namespace Demo.PlugIns.MapDrive
 					Vector3 localCenterOfCurvature = Side * signedRadius;
 					Vector3 center = Position + localCenterOfCurvature;
 					annotation.CircleOrDisk(MinimumTurningRadius(), Up,
-                                            center, Color.Blue.ToVector3().FromXna(), 40, false, false);
+                                            center, Color.Blue, 40, false, false);
 				}
 				return trimmed + widenOut;
 			}
@@ -1552,7 +1551,7 @@ namespace Demo.PlugIns.MapDrive
 				// rotate point to next step around circle
 				spoke = spoke.RotateAboutGlobalY(step, ref sin, ref cos);
 
-                annotation.Line(spoke + center, old, color.ToVector3().FromXna());
+                annotation.Line(spoke + center, old, color);
 			}
 		}
 

@@ -13,7 +13,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using SharpSteer2;
 using SharpSteer2.Helpers;
-using Vector3 = System.Numerics.Vector3;
+
 
 namespace Demo.PlugIns.Ctf
 {
@@ -89,7 +89,7 @@ namespace Demo.PlugIns.Ctf
 			    float eForwardDistance = Vector3.Dot(Forward, eOffset);
 
 			    // xxx temp move this up before the conditionals
-			    annotation.CircleXZ(e.Radius, eFuture, Globals.ClearPathColor.ToVector3().FromXna(), 20); //xxx
+			    annotation.CircleXZ(e.Radius, eFuture, Globals.ClearPathColor, 20); //xxx
 
 			    // consider as potential blocker if within the corridor
 			    if (inCorridor)
@@ -117,7 +117,7 @@ namespace Demo.PlugIns.Ctf
 			            if (!safeToTurnTowardsGoal)
 			            {
 			                // this enemy blocks the path to the goal, so return false
-			                annotation.Line(Position, e.Position, Globals.ClearPathColor.ToVector3().FromXna());
+			                annotation.Line(Position, e.Position, Globals.ClearPathColor);
 			                // return false;
 			                xxxReturn = false;
 			            }
@@ -157,18 +157,18 @@ namespace Demo.PlugIns.Ctf
 	        {
 	            // we have a clear path (defender-free corridor), use pure seek
 
-	            annotation.Line(Position, Position + (seek * 0.2f), Globals.SeekColor.ToVector3().FromXna());
+	            annotation.Line(Position, Position + (seek * 0.2f), Globals.SeekColor);
                 return seek;
 	        }
 
 		    Vector3 evade = XXXSteerToEvadeAllDefenders();
 		    Vector3 steer = (seek + evade).LimitMaxDeviationAngle(0.707f, Forward);
 
-            annotation.Line(Position, Position + seek, Color.Red.ToVector3().FromXna());
-            annotation.Line(Position, Position + evade, Color.Green.ToVector3().FromXna());
+            annotation.Line(Position, Position + seek, Color.Red);
+            annotation.Line(Position, Position + evade, Color.Green);
 
 		    // annotation: show evasion steering force
-            annotation.Line(Position, Position + (steer * 0.2f), Globals.EvadeColor.ToVector3().FromXna());
+            annotation.Line(Position, Position + (steer * 0.2f), Globals.EvadeColor);
 		    return steer;
 		}
 
@@ -261,7 +261,7 @@ namespace Demo.PlugIns.Ctf
 			            float timeEstimate = 0.15f * eDistance / e.Speed;//xxx
 			            Vector3 future = e.PredictFuturePosition(timeEstimate);
 
-                        annotation.CircleXZ(e.Radius, future, Globals.EvadeColor.ToVector3().FromXna(), 20); // xxx
+                        annotation.CircleXZ(e.Radius, future, Globals.EvadeColor, 20); // xxx
 
 			            Vector3 offset = future - Position;
 			            Vector3 lateral = Vector3Helpers.PerpendicularComponent(offset, Forward);
@@ -288,7 +288,7 @@ namespace Demo.PlugIns.Ctf
 			    Vector3 eFuture = e.PredictFuturePosition(timeEstimate);
 
 			    // annotation
-                annotation.CircleXZ(e.Radius, eFuture, Globals.EvadeColor.ToVector3().FromXna(), 20);
+                annotation.CircleXZ(e.Radius, eFuture, Globals.EvadeColor, 20);
 
 			    // steering to flee from eFuture (enemy's future position)
 			    Vector3 flee = SteerForFlee(eFuture);
@@ -331,10 +331,10 @@ namespace Demo.PlugIns.Ctf
 			Vector3 gun = this.LocalRotateForwardToSide(goalDirection);
 			Vector3 gn = gun * sideThreshold;
 			Vector3 hbc = Globals.HomeBaseCenter;
-            annotation.Line(pbb + gn, hbc + gn, Globals.ClearPathColor.ToVector3().FromXna());
-            annotation.Line(pbb - gn, hbc - gn, Globals.ClearPathColor.ToVector3().FromXna());
-            annotation.Line(hbc - gn, hbc + gn, Globals.ClearPathColor.ToVector3().FromXna());
-            annotation.Line(pbb - gn, pbb + gn, Globals.ClearPathColor.ToVector3().FromXna());
+            annotation.Line(pbb + gn, hbc + gn, Globals.ClearPathColor);
+            annotation.Line(pbb - gn, hbc - gn, Globals.ClearPathColor);
+            annotation.Line(hbc - gn, hbc + gn, Globals.ClearPathColor);
+            annotation.Line(pbb - gn, pbb + gn, Globals.ClearPathColor);
 			//annotation.AnnotationLine(pbb - behindSide, pbb + behindSide, Globals.clearPathColor);
 		}
 
